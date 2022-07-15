@@ -1,12 +1,12 @@
 import { RouteRecordRaw } from "vue-router";
-import Home from "@/views/home/index.vue";
-const homeRoutes: RouteRecordRaw = {
-  path: "/home",
+import Home from "@/views/home/home.vue";
+const Routes: RouteRecordRaw = {
+  path: "/Home",
   name: Home.name,
   component: Home,
   meta: {
-    title: "首页",
+    title: "主页",
   },
 };
 
-export default homeRoutes;
+export default Routes;

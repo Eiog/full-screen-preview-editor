@@ -1,7 +1,7 @@
 import homeRoutes from "./home.routes"
-import aboutRoutes from "./about.routes"
+import editorRoutes from './editor.routes'
 const moduleRoutes = [
     homeRoutes,
-    aboutRoutes
+    editorRoutes
 ]
 export default moduleRoutes
