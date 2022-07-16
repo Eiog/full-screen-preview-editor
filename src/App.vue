@@ -19,17 +19,18 @@ function changeLanguage() {
 }
 </script>
 <template>
-  <router-view v-slot="{ Component }">
-    <naive-provider>
-      <transition name="fade-transform" mode="out-in">
-        <component :is="Component"></component>
-      </transition>
-    </naive-provider>
-  </router-view>
+  <div class="w-full h-full overflow-hidden">
+    <router-view v-slot="{ Component }">
+      <naive-provider>
+        <transition name="fade-transform" mode="out-in">
+          <component :is="Component"></component>
+        </transition>
+      </naive-provider>
+    </router-view>
+  </div>
 </template>
 
 <style lang="less">
-
 .fade-transform-leave-active,
 .fade-transform-enter-active {
   transition: all 0.3s ease-in-out;

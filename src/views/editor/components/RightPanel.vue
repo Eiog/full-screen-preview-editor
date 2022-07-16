@@ -11,7 +11,7 @@ const collapsed = ref(false);
 </script>
 <template>
   <div
-    class="fixed right-0 top-0 w-100 h-full flex flex-col bg-gray-100 transition-transform duration-300 ease-in-out"
+    class="fixed right-0 top-0 w-100 h-full flex flex-col bg-white shadow-xl transition-transform duration-300 ease-in-out z-999"
     :class="collapsed ? 'translate-x-100' : ''"
   >
     <div

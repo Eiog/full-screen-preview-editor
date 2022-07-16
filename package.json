@@ -14,9 +14,12 @@
     "crypto-js": "^4.1.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.13",
+    "react-dnd-html5-backend": "^16.0.1",
     "vue": "^3.2.25",
     "vue-i18n": "^9.1.10",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vue3-dnd": "^2.0.1",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@iconify-json/cil": "^1.1.1",

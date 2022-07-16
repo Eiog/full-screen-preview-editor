@@ -1,35 +1,38 @@
 <script setup lang="ts" name="LeftPanel">
+import VueDraggable from "vuedraggable";
+import ShrinkPanel from "./ShrinkPanel.vue";
+import { Text } from "@/components";
+import Widget from './Widget.vue'
 type Props = {
   collapsed?: boolean;
 };
 type Emit = {
   (e: "onSelect", data: any): any;
 };
+
 const props = defineProps<Props>();
 const emit = defineEmits<Emit>();
-const collapsed = ref(false);
+const widgetList = ref<Widget.Widget[]>([
+  {
+    id: new Date().getTime() + Math.random().toString(36).substr(2),
+    name: "文本",
+    component: 'Text',
+  },
+]);
+const group = ref({
+  name: "charts",
+  pull: true,
+  put: true,
+});
+function onStart(data) {}
+function onEnd(data) {}
+function onMove(e) {}
 </script>
 <template>
-  <div
-    class="fixed left-0 top-0 w-80 h-full flex flex-col bg-gray-100 transition-transform duration-300 ease-in-out"
-    :class="collapsed ? '-translate-x-80' : ''"
-  >
-    <div
-      class="absolute w-10 h-10 flex items-center justify-center bg-gray-300 rounded-full shadow-md right-0 top-50% -translate-y-50% translate-x-50% transition-transform cursor-pointer"
-      :class="collapsed?'!translate-x-110%':''"
-      @click="collapsed = !collapsed"
-    >
-      <i class="i-ri-arrow-left-s-line inline-block text-3xl text-white transition-transform"
-      :class="collapsed?'rotate-180':''"
-      ></i>
+  <ShrinkPanel :show="true" title="组件">
+    <div class="w-full h-20 " v-for="(item, index) in widgetList" :key="index">
+      <Widget :id="item.id" :name="item.name" />
     </div>
-    <div class="w-full bg-gray-200 p-3">
-      <h3>组件</h3>
-      <div class="w-full h-full overflow-y-auto">
-        
-
-      </div>
-    </div>
-  </div>
+  </ShrinkPanel>
 </template>
 <style scoped lang="less"></style>

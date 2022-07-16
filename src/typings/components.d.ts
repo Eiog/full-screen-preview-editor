@@ -8,6 +8,7 @@ declare module '@vue/runtime-core' {
     NaiveProvider: typeof import('./../components/common/NaiveProvider.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Text: typeof import('./../components/widget/Text.vue')['default']
   }
 }
 
