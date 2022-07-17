@@ -2,7 +2,7 @@
 const router = useRouter()
 </script>
 <template>
-<div class="fixed flex items-center gap-3 left-50% top-5 -translate-x-50%  h-14 px-2 bg-white bg-opacity-60 backdrop-blur-md text-gray-500 text-base select-none rounded-xl shadow-lg z-999"
+<div class="fixed flex items-center gap-3 left-50% top-5 -translate-x-50%  h-14 px-2 bg-white bg-opacity-60 backdrop-blur-md text-gray-500 text-base select-none rounded-xl shadow-lg whitespace-nowrap z-999"
     dark="bg-neutral-600 bg-opacity-60 text-gray-400"
 >
     <div class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"

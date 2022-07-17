@@ -1,8 +1,8 @@
 <script setup lang="ts" name="LeftPanel">
-import VueDraggable from "vuedraggable";
+import {nanoid} from '@/utils'
 import ShrinkPanel from "./ShrinkPanel.vue";
 import { Text } from "@/components";
-import Widget from './Widget.vue'
+import WidgetPreview from './WidgetPreview.vue'
 type Props = {
   collapsed?: boolean;
 };
@@ -12,11 +12,20 @@ type Emit = {
 
 const props = defineProps<Props>();
 const emit = defineEmits<Emit>();
-const widgetList = ref<Widget.Widget[]>([
+const widgetList = ref<Editor.Widget[]>([
   {
-    id: new Date().getTime() + Math.random().toString(36).substr(2),
+    id: '',
+    i:'',
     name: "文本",
-    component: 'Text',
+    component: markRaw(Text),
+    componentName:'Text',
+    width:400,
+    height:100,
+    x:0,
+    y:0,
+    w:4,
+    h:1,
+    props:{}
   },
 ]);
 const group = ref({
@@ -30,9 +39,7 @@ function onMove(e) {}
 </script>
 <template>
   <ShrinkPanel :show="true" title="组件">
-    <div class="w-full h-20 " v-for="(item, index) in widgetList" :key="index">
-      <Widget :id="item.id" :name="item.name" />
-    </div>
+      <WidgetPreview v-for="(item, index) in widgetList" :key="index" :data="item" />
   </ShrinkPanel>
 </template>
 <style scoped lang="less"></style>

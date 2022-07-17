@@ -62,7 +62,7 @@ watch(
 </script>
 <template>
   <div
-    class="fixed top-0 h-full flex flex-col bg-white shadow-xl duration-300 ease-in-out z-999"
+    class="fixed top-0 h-full flex flex-col bg-white shadow-xl duration-300 ease-in-out z-998"
     :style="[bandStyle]"
     dark="bg-dark-500 text-gray-100"
   >
@@ -82,7 +82,7 @@ watch(
         <h3>{{ props.title }}</h3>
       </slot>
     </div>
-    <div class="w-full h-full p-3 overflow-y-auto">
+    <div class="w-full h-full p-3">
       <slot />
     </div>
   </div>
