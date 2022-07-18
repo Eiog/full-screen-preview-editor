@@ -1,28 +1,31 @@
-declare namespace Editor{
-    type Props = {
-
-    }
-    type Widget = {
-        id:string
-        i:string
-        name:string
-        component:import('vue').Component|string
-        componentName:string
-        dark?:boolean
-        props?:Props,
-        width?:number
-        height?:number
-        x?:number
-        y?:number
-        w?:number
-        h?:number
+declare namespace Editor {
+    
+    interface Widget  {
+        id: string
+        label: string
+        name: string
+        component?: import('vue').Component
+        icon?: string
+        cover?:string
+        brief?:string
+        type:string
+        typeName:string
+        schema?: {},
+        props?: {},
+        width?: number
+        height?: number
+        i: string
+        x?: number
+        y?: number
+        w?: number
+        h?: number
     }
     type Canvas = {
-        width:number
-        height:number
-        zoom:number
-        row:number
-        col:number
-        background:string
+        width: number
+        height: number
+        zoom: number
+        row: number
+        col: number
+        background: string
     }
 }

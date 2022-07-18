@@ -1,4 +1,4 @@
-<script setup lang="ts" name="Widget">
+<script setup lang="ts" name="WidgetPreview">
 import {nanoid} from '@/utils'
 import { useDrag } from "vue3-dnd";
 import { computed, unref } from "vue";
@@ -20,8 +20,8 @@ const [collect, drag] = useDrag(() => ({
     if (item && dropResult) {
       let data = _.cloneDeep(item.data)
       let id = nanoid()
-      data.id = id
       data.i = id
+      data.id = id
       eidtorStore.dragIn(data);
     }
   },
@@ -36,14 +36,22 @@ const opacity = computed(() => (unref(isDragging) ? 0.4 : 1));
 </script>
 <template>
   <div
-    class="w-full h-20 bg-gray-100 rounded-md text-xl flex items-center justify-center transition-shadow"
+    class="w-full h-20 bg-gray-100 rounded-md flex items-center justify-center gap-3 transition-shadow cursor-pointer"
+    dark="bg-dark-200"
     hover="shadow-md"
     active="shadow-none"
     :style="{ opacity: opacity }"
     :ref="drag"
     role="Box"
   >
-    {{ props.data.name }}
+  <div class="w-16 h-16 overflow-hidden">
+    <img class="w-full h-full object-cover" :src="props.data.cover" alt="">
+  </div>
+  <div class="flex flex-col">
+    <p class="text-2xl">{{ props.data.label }}</p>
+    <p>{{props.data.name}}</p>
+  </div>
+    
   </div>
 </template>
 <style scoped lang="less"></style>

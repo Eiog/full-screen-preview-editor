@@ -1,5 +1,5 @@
 <script setup lang="ts" name="Canvas">
-import GridCanvas from "./GridCanvas.vue";
+import GridCanvas from "./components/GridCanvas.vue";
 import { useDrop } from "vue3-dnd";
 import { computed, unref } from "vue";
 import { toRefs } from "@vueuse/core";
@@ -12,7 +12,6 @@ const { x: canvasX, y: canvasY } = useDraggable(canvasRef, {
   exact: true,
 });
 
-const isCanvasActive = ref(false);
 
 const [collect, drop] = useDrop(() => ({
   accept: "box",
@@ -25,7 +24,7 @@ const [collect, drop] = useDrop(() => ({
 const { canDrop, isOver } = toRefs(collect);
 const isActive = computed(() => unref(canDrop) && unref(isOver));
 const backgroundColor = computed(() =>
-  unref(isActive) ? "#ddd" : unref(canDrop) ? "#eee" : "#fff"
+  unref(isActive) ? "#ddd" : unref(canDrop) ? "#eee" : eidtorStore.canvas.background
 );
 const canvas = ref()
 const { isOutside } = useMouseInElement(canvas)
@@ -54,6 +53,13 @@ onMounted(()=>{
 onBeforeUnmount(()=>{
   removeEventWheel()
 })
+const handleCanvasEdit = (e:Event)=>{
+  eidtorStore.canvasEditing = true
+}
+const handleWrapClick = ()=>{
+  eidtorStore.canvasEditing = false
+  eidtorStore.editWidgetId = ''
+}
 </script>
 <template>
   <div
@@ -61,23 +67,24 @@ onBeforeUnmount(()=>{
     class="fixed w-200% h-200% flex items-center justify-center bg-gray-100 cursor-pointer cursor-move"
     dark="bg-dark-300"
     :style="{ transform: `translate3d(${canvasX}px,${canvasY}px,0)` }"
-    @click.self="isCanvasActive = false"
+    @click.self="handleWrapClick"
   >
     <div
       class="w-320 h-180 bg-white cursor-default transition-all rounded-md"
       dark="bg-dark-50"
-      :class="isCanvasActive ? 'shadow-xl' : 'shadow'"
-      @click="isCanvasActive = true"
+      :class="eidtorStore.canvasEditing ? 'shadow-xl' : 'shadow'"
+      id="canvas"
+      @click.self="handleCanvasEdit"
       :ref="drop"
       
       role="Dustbin"
-      :style="{
+      :style="[{
         background: backgroundColor,
         width: eidtorStore.canvasWidth + 'px',
         height: eidtorStore.canvasHeight + 'px',
-      }"
+      }]"
     >
-      <div class="w-full h-full" ref="canvas">
+      <div class="w-full h-full pointer-events-none" ref="canvas">
         <GridCanvas />
       </div>
     </div>

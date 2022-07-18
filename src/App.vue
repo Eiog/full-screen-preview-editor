@@ -1,31 +1,24 @@
 <script setup lang="ts">
 import { useAppStore } from "./store";
 import { subscribeStore } from "./store";
-import RiHomeHeartLine from "~icons/ri/home-heart-line";
-import MaterialSymbolsSunny from "~icons/material-symbols/sunny";
-import CilLanguage from "~icons/cil/language";
-import PhMoonStars from "~icons/ph/moon-stars";
-import SimpleIconsAboutdotme from "~icons/simple-icons/aboutdotme";
-import MdiGithub from "~icons/mdi/github";
-import { NTooltip } from "naive-ui";
-import { useRouter } from "vue-router";
 import { NaiveProvider } from "@/components";
-const router = useRouter();
 subscribeStore();
-const appStore = useAppStore();
-
-function changeLanguage() {
-  appStore.language = appStore.language === "cn" ? "en" : "cn";
-}
+const appStore = useAppStore()
 </script>
 <template>
-  <div class="w-full h-full overflow-hidden">
+  <div class="w-full h-full overflow-hidden bg-gray-100"
+  dark="bg-dark-300"
+  >
     <router-view v-slot="{ Component }">
+    <n-config-provider class="h-full" :theme="appStore.naiveDarkMode">
       <naive-provider>
         <transition name="fade-transform" mode="out-in">
-          <component :is="Component"></component>
+          <keep-alive>
+            <component :is="Component"></component>
+          </keep-alive>
         </transition>
       </naive-provider>
+      </n-config-provider>
     </router-view>
   </div>
 </template>

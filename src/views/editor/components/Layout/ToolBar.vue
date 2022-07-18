@@ -54,6 +54,7 @@ const router = useRouter()
     <div class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
     hover="bg-black bg-opacity-10"
     active="bg-black bg-opacity-20"
+    @click="router.push('/preview')"
     >
         <i class="i-ri-apps-fill"></i>
         <span>预览</span>
