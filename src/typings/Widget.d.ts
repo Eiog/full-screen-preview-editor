@@ -3,10 +3,10 @@ declare namespace Widget {
         label: string
         type: 'string' | 'number' | 'upload' | 'select' | 'switch' | 'color' | 'time'
         value: string | number | boolean | object | Array
-        option?: {
-            key: string | number | boolean
-            value: string
-        }
+        options?: {
+            value: string | number | boolean
+            label: string
+        }[]
         rule?: any
     }
 }

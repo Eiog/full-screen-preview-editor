@@ -78,6 +78,7 @@ const initAttrPanel = () => {};
                   <component
                     :is="attrWidget[item.type]"
                     v-model:value="eidtorStore.canvasWidgetList[eidtorStore.editWidgetIndex].props![item.key]"
+                    :options="eidtorStore.canvasWidgetList[eidtorStore.editWidgetIndex].schema![item.key].options"
                   ></component>
                 </div>
               </div>

@@ -20,7 +20,14 @@ const target = ref(null)
 // })
 </script>
 <template>
-<div ref="target" class="w-full h-full" @click.stop="handleWidgetClick" >
+<div ref="target" class="w-full h-full relative" @click.stop="handleWidgetClick" >
+    <div v-if="isEdit"
+    class="absolute -top-10px -right-10px w-20px h-20px flex items-center justify-center bg-white rounded-full shadow-md z-10 cursor-pointer transition-transform"
+    hover="scale-110"
+    @click="eidtorStore.removeWidget(props.id)"
+    >
+        <i class="i-ri-close-fill inline-block text-lg"></i>
+    </div>
     <slot/>
 </div>
 </template>

@@ -25,6 +25,10 @@ export const useEditorStore = defineStore({
     actions: {
         dragIn(widget:Editor.Widget){
             this.canvasWidgetList.push(widget)
+        },
+        removeWidget(id:string){
+            let index = this.canvasWidgetList.findIndex(item=>item.id===id)
+            if(index>-1) this.canvasWidgetList.splice(index,1)
         }
     },
     getters: {

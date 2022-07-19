@@ -7,22 +7,16 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Date: typeof import('./../components/widget/Date.vue')['default']
     Image: typeof import('./../components/widget/Media/ImageWidget/Image.vue')['default']
-    ImageWidget: typeof import('./../components/widget/ImageWidget/ImageWidget.vue')['default']
     NaiveProvider: typeof import('./../components/common/NaiveProvider.vue')['default']
     NColorPicker: typeof import('naive-ui')['NColorPicker']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NFormItem: typeof import('naive-ui')['NFormItem']
-    NInput: typeof import('naive-ui')['NInput']
     NInputNumber: typeof import('naive-ui')['NInputNumber']
     NTabPane: typeof import('naive-ui')['NTabPane']
     NTabs: typeof import('naive-ui')['NTabs']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Text: typeof import('./../components/widget/Common/TextWidget/Text.vue')['default']
-    TextWidget: typeof import('./../components/widget/TextWidget.vue')['default']
-    Time: typeof import('./../components/widget/Time.vue')['default']
-    TimeWidget: typeof import('./../components/widget/TimeWidget.vue')['default']
   }
 }

@@ -55,6 +55,7 @@ onBeforeUnmount(()=>{
 })
 const handleCanvasEdit = (e:Event)=>{
   eidtorStore.canvasEditing = true
+  eidtorStore.editWidgetId = ''
 }
 const handleWrapClick = ()=>{
   eidtorStore.canvasEditing = false

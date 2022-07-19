@@ -4,8 +4,8 @@ export type WidgetProps = {
     value: string | number;
     size: number;
     color: string;
-    align:'center'|'start'|'end'
-    justify:'center'|'start'|'end'
+    align: 'center' | 'start' | 'end'
+    justify: 'center' | 'start' | 'end'
     style?: import("vue").CSSProperties;
 }
 interface TextWidget extends Editor.Widget {
@@ -15,7 +15,7 @@ interface TextWidget extends Editor.Widget {
         color: Widget.SchemaType
         align: Widget.SchemaType
         justify: Widget.SchemaType
-        style:Widget.SchemaType
+        style: Widget.SchemaType
     }
 }
 export default {
@@ -25,8 +25,8 @@ export default {
     component: defineAsyncComponent(() => import('./Text.vue')),
     icon: '',
     brief: '这是一个基础的文本组件可配置项：（字体大小，字体颜色）',
-    type:'common',
-    typeName:'公共',
+    type: 'common',
+    typeName: '公共',
     cover: icon,
     schema: {
         value: {
@@ -46,18 +46,33 @@ export default {
         },
         align: {
             label: 'align',
-            type: 'string',
-            value: 'center'
+            type: 'select',
+            value: 'center',
+            options: [
+                {
+                    value: 'start',
+                    label: '顶部对齐'
+                },
+                {
+                    value: 'center',
+                    label: '居中'
+                },
+                {
+                    value: 'end',
+                    label: '底部对齐'
+                },
+            ]
+
         },
         justify: {
             label: 'justify',
             type: 'string',
             value: 'center'
         },
-        style:{
-            label:'样式',
-            type:'string',
-            value:''
+        style: {
+            label: '样式',
+            type: 'string',
+            value: ''
         }
     },
     props: {
