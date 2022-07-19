@@ -17,13 +17,6 @@ const props = withDefaults(defineProps<Props>(), {
 });
 const emit = defineEmits<Emit>();
 const collapsed = ref(false);
-const positionStyleCollapsed = computed(() => {
-  return collapsed.value
-    ? props.position === "left"
-      ? `translateX(-${props.width}px)`
-      : `translateX(${props.width}px)`
-    : ``;
-});
 const bandStyle = computed(() => {
   let style: import("vue").CSSProperties = {};
   style.width = props.width + "px";

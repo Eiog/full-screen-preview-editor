@@ -12,7 +12,6 @@ interface ImageWidget extends Editor.Widget {
         url: Widget.SchemaType,
         alt:Widget.SchemaType,
         objectFit: Widget.SchemaType,
-        style?: Widget.SchemaType
     }
 }
 export default {
@@ -38,13 +37,30 @@ export default {
         },
         objectFit:{
             label:'缩放模式',
-            type:'string',
-            value:'cover'
-        },
-        style:{
-            label:'样式',
-            type:'string',
-            value:''
+            type:'select',
+            value:'cover',
+            options:[
+                {
+                    value:'fill',
+                    label:'填充'
+                },
+                {
+                    value:'contain',
+                    label:'等比缩放'
+                },
+                {
+                    value:'cover',
+                    label:'等比填充'
+                },
+                {
+                    value:'none',
+                    label:'默认'
+                },
+                {
+                    value:'scale-down',
+                    label:'短边填充'
+                },
+            ]
         }
     },
     props: {

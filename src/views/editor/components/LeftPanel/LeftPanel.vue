@@ -22,13 +22,15 @@ initWidget();
 </script>
 <template>
   <ShrinkPanel :show="true" title="组件">
-  <div class="w-full h-full flex flex-col gap-3">
+  <n-scrollbar class="w-full h-full">
+  <div class="w-full flex flex-col gap-3">
     <WidgetPreview
       v-for="(item, index) in widgetList"
       :key="index"
       :data="item"
     />
     </div>
+    </n-scrollbar>
   </ShrinkPanel>
 </template>
 <style scoped lang="less"></style>

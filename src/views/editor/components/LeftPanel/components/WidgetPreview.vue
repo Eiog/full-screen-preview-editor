@@ -5,7 +5,7 @@ import { computed, unref } from "vue";
 import { toRefs } from "@vueuse/core";
 import { useEditorStore } from "@/store";
 import _ from 'lodash-es'
-const eidtorStore = useEditorStore();
+const editorStore = useEditorStore();
 type Props = {
   data: Editor.Widget;
 };
@@ -22,7 +22,9 @@ const [collect, drag] = useDrag(() => ({
       let id = nanoid()
       data.i = id
       data.id = id
-      eidtorStore.dragIn(data);
+      editorStore.dragIn(data);
+      editorStore.canvasEditing = false
+      editorStore.editWidgetId = data.id
     }
   },
   collect: (monitor) => ({

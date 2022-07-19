@@ -27,5 +27,13 @@ declare namespace Editor {
         row: number
         col: number
         background: string
+        backgroundImage?:string
+        backgroundOjectfit?:'contain'|'cover'
+        backgroundRepeat:boolean
+        backgroundOjectfitOptions?: {
+            value: string | number | boolean
+            label: string
+        }[]
+        ,
     }
 }

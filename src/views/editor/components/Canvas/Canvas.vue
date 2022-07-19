@@ -4,7 +4,7 @@ import { useDrop } from "vue3-dnd";
 import { computed, unref } from "vue";
 import { toRefs } from "@vueuse/core";
 import { useEditorStore } from "@/store";
-const eidtorStore = useEditorStore();
+const editorStore = useEditorStore();
 //画布拖拽
 const canvasRef = ref();
 const { x: canvasX, y: canvasY } = useDraggable(canvasRef, {
@@ -24,7 +24,7 @@ const [collect, drop] = useDrop(() => ({
 const { canDrop, isOver } = toRefs(collect);
 const isActive = computed(() => unref(canDrop) && unref(isOver));
 const backgroundColor = computed(() =>
-  unref(isActive) ? "#ddd" : unref(canDrop) ? "#eee" : eidtorStore.canvas.background
+  unref(isActive) ? "#ddd" : unref(canDrop) ? "#eee" : editorStore.canvas.background
 );
 const canvas = ref()
 const { isOutside } = useMouseInElement(canvas)
@@ -40,11 +40,11 @@ const onMouseWheel = (ev)=>{
   let down = true
   down = ev.wheelDelta ? ev.wheelDelta < 0 : ev.detail > 0;
   if(down){
-    if(eidtorStore.canvas.zoom<20) return
-    eidtorStore.canvas.zoom-=2
+    if(editorStore.canvas.zoom<20) return
+    editorStore.canvas.zoom-=2
   }else{
-    if(eidtorStore.canvas.zoom>120) return
-    eidtorStore.canvas.zoom+=2
+    if(editorStore.canvas.zoom>120) return
+    editorStore.canvas.zoom+=2
   }
 }
 onMounted(()=>{
@@ -54,12 +54,12 @@ onBeforeUnmount(()=>{
   removeEventWheel()
 })
 const handleCanvasEdit = (e:Event)=>{
-  eidtorStore.canvasEditing = true
-  eidtorStore.editWidgetId = ''
+  editorStore.canvasEditing = true
+  editorStore.editWidgetId = ''
 }
 const handleWrapClick = ()=>{
-  eidtorStore.canvasEditing = false
-  eidtorStore.editWidgetId = ''
+  editorStore.canvasEditing = false
+  editorStore.editWidgetId = ''
 }
 </script>
 <template>
@@ -73,7 +73,7 @@ const handleWrapClick = ()=>{
     <div
       class="w-320 h-180 bg-white cursor-default transition-all rounded-md"
       dark="bg-dark-50"
-      :class="eidtorStore.canvasEditing ? 'shadow-xl' : 'shadow'"
+      :class="editorStore.canvasEditing ? 'shadow-xl' : 'shadow'"
       id="canvas"
       @click.self="handleCanvasEdit"
       :ref="drop"
@@ -81,8 +81,12 @@ const handleWrapClick = ()=>{
       role="Dustbin"
       :style="[{
         background: backgroundColor,
-        width: eidtorStore.canvasWidth + 'px',
-        height: eidtorStore.canvasHeight + 'px',
+        width: editorStore.canvasWidth + 'px',
+        height: editorStore.canvasHeight + 'px',
+        backgroundImage:`url(${editorStore.canvas.backgroundImage})`,
+        backgroundSize:editorStore.canvas.backgroundOjectfit,
+        backgroundPosition:'center',
+        backgroundRepeat:editorStore.canvas.backgroundRepeat?'repeat':'no-repeat'
       }]"
     >
       <div class="w-full h-full pointer-events-none" ref="canvas">

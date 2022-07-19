@@ -36,7 +36,7 @@ const handleSubmit = () => {
       class="w-full h-full"
       :src="_props.url"
       :alt="_props.alt"
-      :style="[{ objectFit: `${_props.objectFit}` }, { ..._props.style }]"
+      :style="[{ objectFit: `${_props.objectFit}` }]"
     />
   </div>
 </template>

@@ -4,7 +4,7 @@ import { useEditorStore } from "@/store";
 import WidgetItem from "./WidgetItem.vue";
 import { WidgetList } from "@/components";
 import { markRaw } from "vue";
-const eidtorStore = useEditorStore();
+const editorStore = useEditorStore();
 const WidgetListMap = ref({});
 const initWidget = () => {
   Object.values(WidgetList).forEach((item) => {
@@ -19,10 +19,10 @@ const onChange = (item) => {
 <template>
   <div class="w-full h-full">
     <grid-layout
-      :layout.sync="eidtorStore.canvasWidgetList"
-      :col-num="eidtorStore.canvas.col"
-      :row-height="eidtorStore.gridRowHeight"
-      :max-rows="eidtorStore.canvas.row"
+      :layout.sync="editorStore.canvasWidgetList"
+      :col-num="editorStore.canvas.col"
+      :row-height="editorStore.gridRowHeight"
+      :max-rows="editorStore.canvas.row"
       :prevent-collision="true"
       :is-draggable="true"
       :is-resizable="true"
@@ -32,13 +32,13 @@ const onChange = (item) => {
       :margin="[0, 0]"
     >
       <grid-item
-        class="border-2 border-dashed border-gray-300 pointer-events-auto"
+        class="border-1 border-dashed border-gray-300 border-opacity-0  pointer-events-auto"
         :class="
-          !eidtorStore.canvasEditing && eidtorStore.editWidgetId === item.id
-            ? 'border-gray-500'
+          !editorStore.canvasEditing && editorStore.editWidgetId === item.id
+            ? 'border-gray-500 border-opacity-100'
             : ''
         "
-        v-for="(item, index) in eidtorStore.canvasWidgetList"
+        v-for="(item, index) in editorStore.canvasWidgetList"
         :x="item.x"
         :y="item.y"
         :w="item.w"

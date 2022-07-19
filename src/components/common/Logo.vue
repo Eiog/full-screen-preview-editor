@@ -1,8 +1,19 @@
-<script setup lang="ts" name="Preview">
-
+<script setup lang="ts" name="Logo">
+type Props = {
+  width?: number;
+  height?: number;
+  from?:string
+  to?:string
+};
+const props = withDefaults(defineProps<Props>(), {
+  width: 100,
+  height: 100,
+  from:'#fad5a5',
+  to:'#f06c68'
+});
 </script>
 <template>
-  <div class="w-50 h-50">
+  <div class="flex items-center justify-center" :style="{ width: props.width + 'px', height: props.height + 'px' }">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xlink="http://www.w3.org/1999/xlink"
@@ -17,8 +28,8 @@
           y2="19.22"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#fad5a5"></stop>
-          <stop offset="1" stop-color="#f06c68"></stop>
+          <stop offset="0" :stop-color="props.from"></stop>
+          <stop offset="1" :stop-color="props.to"></stop>
         </linearGradient>
         <linearGradient
           id="b2e85b305-a48f-4eaa-99fe-a23f5485b66c"

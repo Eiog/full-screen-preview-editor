@@ -41,7 +41,7 @@ const handleSubmit = () => {
   >
     <p
       v-if="!isEidt"
-      :style="[{ fontSize: _props.size + 'px', color: _props.color },{..._props.style}]"
+      :style="[{ fontSize: _props.size + 'px', color: _props.color }]"
       @dblclick="handleEidt"
     >
       {{ _props.value }}

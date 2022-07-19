@@ -15,7 +15,6 @@ interface TextWidget extends Editor.Widget {
         color: Widget.SchemaType
         align: Widget.SchemaType
         justify: Widget.SchemaType
-        style: Widget.SchemaType
     }
 }
 export default {
@@ -41,7 +40,7 @@ export default {
         },
         color: {
             label: '颜色',
-            type: 'string',
+            type: 'color',
             value: '#000'
         },
         align: {
@@ -66,13 +65,22 @@ export default {
         },
         justify: {
             label: 'justify',
-            type: 'string',
-            value: 'center'
-        },
-        style: {
-            label: '样式',
-            type: 'string',
-            value: ''
+            type: 'select',
+            value: 'center',
+            options: [
+                {
+                    value: 'start',
+                    label: '顶部对齐'
+                },
+                {
+                    value: 'center',
+                    label: '居中'
+                },
+                {
+                    value: 'end',
+                    label: '底部对齐'
+                },
+            ]
         }
     },
     props: {
