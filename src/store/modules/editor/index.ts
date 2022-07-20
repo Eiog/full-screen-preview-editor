@@ -7,6 +7,7 @@ type State = {
     canvasWidgetList: Editor.Widget[]
     editWidgetId: string
     canvasEditing: boolean
+    previewData:Editor.Widget[]
 }
 export const useEditorStore = defineStore({
     id: 'editorStore',
@@ -40,6 +41,7 @@ export const useEditorStore = defineStore({
         ],
         editWidgetId: '',
         canvasEditing: false,
+        previewData:[]
     }),
     actions: {
         dragIn(widget: Editor.Widget) {
