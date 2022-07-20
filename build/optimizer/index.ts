@@ -15,6 +15,10 @@ const vendorLibs: { match: string[]; output: string }[] = [
         match: ['echarts'],
         output: 'echarts',
     },
+    {
+        match: ['vue3-grid-layout'],
+        output: 'vue3-grid-layout',
+    },
 ];
 //分包
 export const configManualChunk = (id: string) => {

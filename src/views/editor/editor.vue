@@ -7,6 +7,7 @@ import RightPanel from './components/RightPanel/RightPanel.vue';
 import ToolBar from './components/Layout/ToolBar.vue';
 import Canvas from './components/Canvas/Canvas.vue'
 import NavBar from './components/Layout/NavBar.vue';
+import {onBeforeRouteLeave} from 'vue-router'
 import { useAppStore, useEditorStore } from '@/store';
 import {nanoid} from '@/utils'
 const appStore = useAppStore()
@@ -50,6 +51,9 @@ onMounted(()=>{
 })
 onActivated(()=>{
   appStore.editorKeepAlive = false
+})
+onBeforeRouteLeave(()=>{
+  window.$dialog.destroyAll()
 })
 </script>
 <template>

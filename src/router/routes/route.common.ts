@@ -4,6 +4,11 @@ export const commonRoutes: Array<RouteRecordRaw> = [
     {
         path: '/:pathMatch(.*)*',
         redirect: "/not-found"
+    },
+    {
+        path:"/not-found",
+        name:'not-found',
+        component:()=>import('@/views/not-found/not-found.vue')
     }
 ];
 
