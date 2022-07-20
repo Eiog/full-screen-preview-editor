@@ -28,6 +28,12 @@ const target = ref(null)
     >
         <i class="i-ri-close-fill inline-block text-lg"></i>
     </div>
+    <div v-if="isEdit"
+    class="move absolute -top-10px -left-10px w-20px h-20px flex items-center justify-center bg-white rounded-full shadow-md z-10 cursor-move transition-transform"
+    hover="scale-110"
+    >
+        <i class="i-ri-drag-move-2-fill inline-block text-lg"></i>
+    </div>
     <slot/>
 </div>
 </template>

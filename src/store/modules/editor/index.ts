@@ -1,5 +1,8 @@
 import { defineStore } from "pinia";
 type State = {
+    id:string
+    name:string
+    author:string
     canvas: Editor.Canvas
     canvasWidgetList: Editor.Widget[]
     editWidgetId: string
@@ -8,6 +11,9 @@ type State = {
 export const useEditorStore = defineStore({
     id: 'editorStore',
     state: (): State => ({
+        id:'',
+        name:'',
+        author:'',
         canvas: {
             width: 1920,
             height: 1080,
@@ -15,17 +21,17 @@ export const useEditorStore = defineStore({
             row: 20,
             col: 24,
             background: '#fff',
-            backgroundImage:'',
-            backgroundOjectfit:'cover',
-            backgroundRepeat:false,
-            backgroundOjectfitOptions:[
+            backgroundImage: '',
+            backgroundOjectfit: 'cover',
+            backgroundRepeat: false,
+            backgroundOjectfitOptions: [
                 {
-                    value:'contain',
-                    label:'填充'
+                    value: 'contain',
+                    label: '填充'
                 },
                 {
-                    value:'cover',
-                    label:'等比填充'
+                    value: 'cover',
+                    label: '等比填充'
                 }
             ],
         },
@@ -33,7 +39,7 @@ export const useEditorStore = defineStore({
 
         ],
         editWidgetId: '',
-        canvasEditing: false
+        canvasEditing: false,
     }),
     actions: {
         dragIn(widget: Editor.Widget) {
@@ -63,6 +69,9 @@ export const useEditorStore = defineStore({
             return this.canvasWidgetList.findIndex(item => item.id === editId)
         },
         editItem(): Editor.Widget {
+            return this.canvasWidgetList[this.editWidgetIndex]
+        },
+        preview(): Editor.Widget {
             return this.canvasWidgetList[this.editWidgetIndex]
         }
     }

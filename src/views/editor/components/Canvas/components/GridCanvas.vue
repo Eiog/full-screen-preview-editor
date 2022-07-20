@@ -45,6 +45,7 @@ const onChange = (item) => {
         :h="item.h"
         :i="item.i"
         :key="item.i"
+        drag-allow-from=".move"
       >
         <WidgetItem :id="item.id">
           <component

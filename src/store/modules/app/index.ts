@@ -1,10 +1,16 @@
 import { defineStore } from "pinia";
 import { darkTheme,useOsTheme } from 'naive-ui';
+type State = {
+    darkMode:boolean
+    language:'cn'|'en'
+    editorKeepAlive:boolean
+}
 export const useAppStore = defineStore({
     id: 'appStore',
-    state: () => ({
+    state: ():State => ({
         darkMode:false,
-        language:'cn'
+        language:'cn',
+        editorKeepAlive:false
     }),
     actions: {
 

@@ -30,10 +30,13 @@ const editorStore = useEditorStore();
         </n-tabs>
       </div>
       <div class="w-full h-40% flex flex-col gap-3">
-        <p class="w-full h-10 bg-gray-100 flex items-center px-3">图层</p>
-        <div class="w-full flex-1 min-h-0">
-          <LayerPanel />
-        </div>
+        <n-tabs type="line" animated>
+          <n-tab-pane name="layer" tab="图层">
+            <div class="w-full flex-1 min-h-0">
+              <LayerPanel />
+            </div>
+          </n-tab-pane>
+        </n-tabs>
       </div>
     </div>
   </ShrinkPanel>

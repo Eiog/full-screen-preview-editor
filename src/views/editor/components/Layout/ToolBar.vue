@@ -1,6 +1,12 @@
 <script setup lang="ts" name="ToolBar">
 import { Logo } from "@/components";
+import { useAppStore } from "@/store";
+const appStore = useAppStore()
 const router = useRouter();
+const handleToPreview = ()=>{
+  appStore.editorKeepAlive = true
+  router.push('/preview')
+}
 </script>
 <template>
   <div
@@ -61,7 +67,7 @@ const router = useRouter();
       class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
       hover="bg-black bg-opacity-10"
       active="bg-black bg-opacity-20"
-      @click="router.push('/preview')"
+      @click="handleToPreview"
     >
       <i class="i-ri-apps-fill"></i>
       <span>预览</span>

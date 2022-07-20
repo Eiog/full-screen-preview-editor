@@ -9,5 +9,7 @@ declare namespace Widget {
             label: string
         }[]
         rule?: any
+        accept?:string
+        step?:number
     }
 }

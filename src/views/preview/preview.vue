@@ -1,4 +1,6 @@
 <script setup lang="ts" name="Preview">
+import { useAppStore } from '@/store';
+const appStore = useAppStore()
 
 </script>
 <template>

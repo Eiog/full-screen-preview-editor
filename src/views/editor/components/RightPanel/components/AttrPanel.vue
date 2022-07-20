@@ -1,5 +1,6 @@
 <script setup lang="ts" name="AttrPanel">
 import { useEditorStore } from "@/store";
+import Upload from "./Upload.vue";
 import {
   NInput,
   NInputNumber,
@@ -12,7 +13,7 @@ import {
 const attrWidget = {
   string: NInput,
   number: NInputNumber,
-  upload: NUpload,
+  upload: Upload,
   select: NSelect,
   switch: NSwitch,
   color: NColorPicker,
@@ -71,6 +72,8 @@ const editSchema = computed(() => {
           v-model:value="editorStore.canvasWidgetList[editorStore.editWidgetIndex].props![item.key]"
           :options="editorStore.canvasWidgetList[editorStore.editWidgetIndex].schema![item.key].options"
           :type="editorStore.canvasWidgetList[editorStore.editWidgetIndex].schema![item.key].textarea?'textarea':''"
+          :accept="editorStore.canvasWidgetList[editorStore.editWidgetIndex].schema![item.key].accept"
+          :step="editorStore.canvasWidgetList[editorStore.editWidgetIndex].schema![item.key].step"
         ></component>
       </div>
     </div>

@@ -8,9 +8,10 @@ const { canvasWidgetList,editWidgetId } = storeToRefs(editorStore);
   <div class="w-full flex flex-col gap-2">
     <div
       class="w-full flex items-center gap-3 cursor-pointer bg-gray-100 p-3 rounded-md overflow-hidden"
+      dark="bg-dark-300"
       v-for="(item, index) in canvasWidgetList"
       :key="index"
-      :class="item.id===editWidgetId?'bg-gray-200':''"
+      :class="item.id===editWidgetId?'bg-gray-200 dark:bg-dark-100':''"
       @click.stop="editWidgetId = item.id"
     >
       <div class="w-50px h-40px overflow-hidden">

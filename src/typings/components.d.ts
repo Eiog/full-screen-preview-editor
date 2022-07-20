@@ -8,8 +8,10 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Image: typeof import('./../components/widget/Media/ImageWidget/Image.vue')['default']
+    Line: typeof import('./../components/widget/Charts/Line/Line.vue')['default']
     Logo: typeof import('./../components/common/Logo.vue')['default']
     NaiveProvider: typeof import('./../components/common/NaiveProvider.vue')['default']
+    NButton: typeof import('naive-ui')['NButton']
     NColorPicker: typeof import('naive-ui')['NColorPicker']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NFormItem: typeof import('naive-ui')['NFormItem']
