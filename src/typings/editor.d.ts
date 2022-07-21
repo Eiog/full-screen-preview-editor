@@ -36,4 +36,8 @@ declare namespace Editor {
         }[]
         ,
     }
+    type Preview = {
+        canvas:Canvas
+        widget:Widget[]
+    }
 }

@@ -48,6 +48,7 @@ specifiers:
   vue-router: ^4.1.2
   vue-tsc: ^0.38.7
   vue3-dnd: ^2.0.1
+  vue3-drag-resize: ^2.0.5
   vue3-grid-layout: ^1.0.0
   vuedraggable: ^2.24.3
 
@@ -66,6 +67,7 @@ dependencies:
   vue-i18n: 9.1.10_vue@3.2.37
   vue-router: 4.1.2_vue@3.2.37
   vue3-dnd: 2.0.1_vue@3.2.37
+  vue3-drag-resize: 2.0.5
   vue3-grid-layout: 1.0.0
   vuedraggable: 2.24.3
 
@@ -2930,6 +2932,10 @@ packages:
       vue-demi: 0.12.5_vue@3.2.37
     transitivePeerDependencies:
       - '@vue/composition-api'
+    dev: false
+
+  /vue3-drag-resize/2.0.5:
+    resolution: {integrity: sha512-7ein6vCC9LN6fsO3o9mYgmoldU9c/O2oyw9U5cqAJP21Mj2yQ8OGNPzEZfen6QltgLMfAOXv4iPIdE0EXFezGA==}
     dev: false
 
   /vue3-grid-layout/1.0.0:

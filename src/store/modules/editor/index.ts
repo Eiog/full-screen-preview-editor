@@ -73,8 +73,12 @@ export const useEditorStore = defineStore({
         editItem(): Editor.Widget {
             return this.canvasWidgetList[this.editWidgetIndex]
         },
-        preview(): Editor.Widget {
-            return this.canvasWidgetList[this.editWidgetIndex]
+        preview(): Editor.Preview {
+            let canvas = this.canvas
+            let widget = this.canvasWidgetList
+            return {
+                canvas,widget
+            }
         }
     }
 })
