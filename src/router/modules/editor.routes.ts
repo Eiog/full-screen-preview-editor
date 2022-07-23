@@ -6,6 +6,8 @@ const Routes: RouteRecordRaw = {
   component: Editor,
   meta: {
     title: "编辑",
+    requiresAuth:true,
+    role:['admin']
   },
 };
 

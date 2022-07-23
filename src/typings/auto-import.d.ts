@@ -45,6 +45,7 @@ declare global {
   const logicAnd: typeof import('@vueuse/core')['logicAnd']
   const logicNot: typeof import('@vueuse/core')['logicNot']
   const logicOr: typeof import('@vueuse/core')['logicOr']
+  const loginApi: typeof import('../api/login.api')['loginApi']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
   const mapActions: typeof import('pinia')['mapActions']
   const mapGetters: typeof import('pinia')['mapGetters']

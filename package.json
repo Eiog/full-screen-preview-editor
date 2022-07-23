@@ -16,6 +16,7 @@
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.16",
+    "pinia-plugin-persistedstate": "^1.6.3",
     "qs": "^6.11.0",
     "react-dnd-html5-backend": "^16.0.1",
     "vue": "^3.2.37",
