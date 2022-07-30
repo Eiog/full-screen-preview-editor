@@ -6,6 +6,8 @@ const Routes: RouteRecordRaw = {
   component: Home,
   meta: {
     title: "主页",
+    requiresAuth:true,
+    role:['admin']
   },
 };
 

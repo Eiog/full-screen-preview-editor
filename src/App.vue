@@ -13,7 +13,7 @@ const appStore = useAppStore()
     <n-config-provider class="h-full" :theme="appStore.naiveDarkMode">
       <naive-provider>
         <transition name="fade-transform" mode="out-in">
-          <keep-alive :include="[appStore.editorKeepAlive?'Editor':'']" >
+          <keep-alive :include="[]" >
             <component :is="Component"></component>
           </keep-alive>
         </transition>

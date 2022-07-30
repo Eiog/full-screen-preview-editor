@@ -6,16 +6,8 @@ type Props = {
   name: string;
   props: WidgetProps;
 };
-type Emit = {
-  (e: "onChange", value: WidgetProps): WidgetProps;
-  (e: "update:props", props: WidgetProps): WidgetProps;
-};
 const props = withDefaults(defineProps<Props>(), {});
-const emit = defineEmits<Emit>();
-const isEidt = ref(false);
-const handleEidt = () => {
-  isEidt.value = true;
-};
+
 const _props = ref(_.cloneDeep(props.props));
 watch(
   () => props.props,
@@ -24,11 +16,6 @@ watch(
   },
   { immediate: true, deep: true }
 );
-const handleSubmit = () => {
-  isEidt.value = false;
-  emit("onChange", _props.value);
-  emit("update:props", _props.value);
-};
 </script>
 <template>
   <div class="w-full h-full overflow-hidden">

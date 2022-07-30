@@ -9,6 +9,7 @@ type Props = {
   height?: number;
   id?:string
   name?:string
+  preview?:boolean
   props?:any
 };
 const props = defineProps<Props>();
@@ -26,9 +27,10 @@ initWidget();
     :style="{
       gridColumn: `span ${props.w} / span ${props.w}`,
       gridRow: `span ${props.h} / span ${props.h}`,
-      gridColumnStart: `${props.x}`,
-      gridRowStart: `${props.y}`,
+      gridColumnStart: `${props.x+1}`,
+      gridRowStart: `${props.y+1}`,
     }"
+    :class="{'transition-shadow hover:shadow-md':preview}"
   >
     <component :is="WidgetListMap[props.name]" :props="props.props" :id="props.id" :name="props.name" ></component>
   </div>

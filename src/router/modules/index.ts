@@ -4,7 +4,7 @@ import previewRoutes from './preview.routes'
 import LoginRoutes from './login.routes'
 const moduleRoutes = [
     homeRoutes,
-    editorRoutes,
+    ...editorRoutes,
     LoginRoutes,
     ...previewRoutes
 ]

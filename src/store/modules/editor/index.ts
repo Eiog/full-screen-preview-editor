@@ -8,6 +8,7 @@ type State = {
     editWidgetId: string
     canvasEditing: boolean
     previewData:Editor.Widget[]
+    newCanvas:boolean
 }
 export const useEditorStore = defineStore({
     id: 'editorStore',
@@ -41,7 +42,8 @@ export const useEditorStore = defineStore({
         ],
         editWidgetId: '',
         canvasEditing: false,
-        previewData:[]
+        previewData:[],
+        newCanvas:true
     }),
     actions: {
         dragIn(widget: Editor.Widget) {
@@ -53,7 +55,14 @@ export const useEditorStore = defineStore({
                 this.canvasWidgetList.splice(index, 1)
                 this.editWidgetId = ''
             }
-
+        },
+        loadCanvas(data:Editor.ProjectList){
+            this.id = data.id
+            this.name = data.name
+            this.author = data.author
+            this.canvas = data.canvas
+            this.canvasWidgetList = data.canvasWidgetList
+            this.editWidgetId = data.editWidgetId
         }
     },
     getters: {

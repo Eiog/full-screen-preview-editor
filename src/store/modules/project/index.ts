@@ -1,17 +1,25 @@
 import { defineStore } from "pinia";
+
 type State = {
-    projectList
+    projectList?: Editor.ProjectList[]
 }
 export const useProjectStore = defineStore({
     id: 'projectStore',
-    state: () => ({
-        projectList:[],
-        preview:[]
+    persist: {
+        key: '__PROJECT__',
+        paths: ['projectList']
+    },
+    state: (): State => ({
+        projectList: [],
     }),
     actions: {
-
+        set(data: Editor.ProjectList) {
+            console.log(data);
+            
+            this.projectList?.push(data)
+        }
     },
     getters: {
-        
+
     }
 })

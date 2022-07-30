@@ -6,9 +6,8 @@ export type WidgetProps = {
     color: string;
     align: 'center' | 'start' | 'end'
     justify: 'center' | 'start' | 'end'
-    style?: import("vue").CSSProperties;
 }
-interface TextWidget extends Editor.Widget {
+interface Schema extends Editor.Widget {
     schema: {
         value: Widget.SchemaType,
         size: Widget.SchemaType,
@@ -92,4 +91,4 @@ export default {
     y: 0,
     w: 4,
     h: 2,
-} as TextWidget 
+} as Schema 

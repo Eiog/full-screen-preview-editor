@@ -7,7 +7,7 @@ export type WidgetProps = {
     style?: import("vue").CSSProperties;
 }
 
-interface ImageWidget extends Editor.Widget {
+interface Schema extends Editor.Widget {
     schema: {
         url: Widget.SchemaType,
         alt:Widget.SchemaType,
@@ -17,7 +17,7 @@ interface ImageWidget extends Editor.Widget {
 export default {
     id: '',
     label: '图片组件',
-    name: 'ImageWidget',
+    name: 'Schema',
     component: defineAsyncComponent(() => import('./Image.vue')),
     icon: '',
     brief: '这是一个基础的图片组件',
@@ -72,4 +72,4 @@ export default {
     y: 0,
     w: 4,
     h: 4,
-} as ImageWidget 
+} as Schema 

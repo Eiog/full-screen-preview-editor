@@ -1,15 +1,15 @@
 declare namespace Editor {
-    
-    interface Widget  {
+
+    interface Widget {
         id: string
         label: string
         name: string
         component?: import('vue').Component
         icon?: string
-        cover?:string
-        brief?:string
-        type:string
-        typeName:string
+        cover?: string
+        brief?: string
+        type: string
+        typeName: string
         schema?: {},
         props?: {},
         width?: number
@@ -27,9 +27,9 @@ declare namespace Editor {
         row: number
         col: number
         background: string
-        backgroundImage?:string
-        backgroundOjectfit?:'contain'|'cover'
-        backgroundRepeat:boolean
+        backgroundImage?: string
+        backgroundOjectfit?: 'contain' | 'cover'
+        backgroundRepeat: boolean
         backgroundOjectfitOptions?: {
             value: string | number | boolean
             label: string
@@ -37,7 +37,15 @@ declare namespace Editor {
         ,
     }
     type Preview = {
-        canvas:Canvas
-        widget:Widget[]
+        canvas: Canvas
+        widget: Widget[]
+    }
+    type ProjectList = {
+        id: string
+        name: string
+        author: string
+        canvas: Editor.Canvas
+        canvasWidgetList: Editor.Widget[]
+        editWidgetId: string
     }
 }

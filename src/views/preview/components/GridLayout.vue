@@ -20,8 +20,8 @@ const props = withDefaults(defineProps<Props>(), {
       width: props.width + 'px',
       height: props.height + 'px',
       background: props.background,
-      gridTemplateColumns: `repeat(${props.col}, minmax(0, 1fr))`,
-      gridTemplateRows: `repeat(${props.row}, minmax(0, 1fr))`,
+      gridTemplateColumns: `repeat(${props.col-1}, minmax(0, 1fr))`,
+      gridTemplateRows: `repeat(${props.row-1}, minmax(0, 1fr))`,
     }"
   >
     <slot />

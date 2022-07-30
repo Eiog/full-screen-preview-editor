@@ -51,6 +51,7 @@ const handleLogin = (e: MouseEvent)=>{
             <n-input
               v-model:value="formValue.account"
               placeholder="输入用户名"
+              @keyup.enter="handleLogin"
             />
           </n-form-item>
           <n-form-item label="密码" path="password">
@@ -58,6 +59,7 @@ const handleLogin = (e: MouseEvent)=>{
               type="password"
               v-model:value="formValue.password"
               placeholder="输入密码"
+              @keyup.enter="handleLogin"
             />
           </n-form-item>
           <n-form-item label="验证码" path="code">
@@ -66,6 +68,7 @@ const handleLogin = (e: MouseEvent)=>{
                 <n-input
                   v-model:value="formValue.code"
                   placeholder="输入验证码"
+                  @keyup.enter="handleLogin"
                 />
               </div>
               <div class="flex items-center rounded-sm overflow-hidden">

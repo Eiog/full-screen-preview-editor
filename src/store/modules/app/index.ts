@@ -25,7 +25,11 @@ export const useAppStore = defineStore({
         token: undefined
     }),
     actions: {
-
+        logout(){
+            this.isLogin = false
+            this.token = undefined
+            this.user = undefined
+        }
     },
     getters: {
         naiveDarkMode(state): any {

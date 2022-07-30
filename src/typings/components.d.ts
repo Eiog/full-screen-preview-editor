@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Audio: typeof import('./../components/widget/Media/AudioWidget/Audio.vue')['default']
     Image: typeof import('./../components/widget/Media/ImageWidget/Image.vue')['default']
     Line: typeof import('./../components/widget/Charts/Line/Line.vue')['default']
     Logo: typeof import('./../components/common/Logo.vue')['default']
@@ -14,6 +15,7 @@ declare module '@vue/runtime-core' {
     NButton: typeof import('naive-ui')['NButton']
     NColorPicker: typeof import('naive-ui')['NColorPicker']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
+    NDropdown: typeof import('naive-ui')['NDropdown']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NInput: typeof import('naive-ui')['NInput']
@@ -25,5 +27,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Text: typeof import('./../components/widget/Common/TextWidget/Text.vue')['default']
+    Time: typeof import('./../components/widget/Common/TimeWidget/Time.vue')['default']
+    Video: typeof import('./../components/widget/Media/VideoWidget/Video.vue')['default']
   }
 }

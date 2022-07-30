@@ -1,4 +1,6 @@
-import textWidget from './TextWidget'
+import TextWidget from './TextWidget'
+import TimeWidget from './TimeWidget'
 export const CommonWidget = {
-    textWidget
+    TextWidget,
+    TimeWidget
 }

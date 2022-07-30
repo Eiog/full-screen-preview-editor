@@ -6,11 +6,11 @@ import { toRefs } from "@vueuse/core";
 import { useEditorStore } from "@/store";
 const editorStore = useEditorStore();
 //画布拖拽
-const canvasRef = ref();
-const { x: canvasX, y: canvasY } = useDraggable(canvasRef, {
-  initialValue: { x: -960, y: -500 },
-  exact: true,
-});
+// const canvasRef = ref();
+// const { x: canvasX, y: canvasY } = useDraggable(canvasRef, {
+//   initialValue: { x: -960, y: -500 },
+//   exact: true,
+// });
 
 
 const [collect, drop] = useDrop(() => ({
@@ -57,18 +57,13 @@ const handleCanvasEdit = (e:Event)=>{
   editorStore.canvasEditing = true
   editorStore.editWidgetId = ''
 }
-const handleWrapClick = ()=>{
-  editorStore.canvasEditing = false
-  editorStore.editWidgetId = ''
-}
+
 </script>
 <template>
   <div
     ref="canvasRef"
-    class="fixed w-200% h-200% flex items-center justify-center bg-gray-100 cursor-pointer cursor-move"
+    class="fixed w-100% h-100% flex items-center justify-center bg-gray-100"
     dark="bg-dark-300"
-    :style="{ transform: `translate3d(${canvasX}px,${canvasY}px,0)` }"
-    @click.self="handleWrapClick"
   >
     <div
       class="w-320 h-180 bg-white cursor-default transition-all rounded-md"

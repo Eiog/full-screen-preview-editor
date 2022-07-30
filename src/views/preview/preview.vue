@@ -2,24 +2,27 @@
 import { useAppStore, useEditorStore } from "@/store";
 import GridLayout from "./components/GridLayout.vue";
 import Widget from "./components/Widget.vue";
-const appStore = useAppStore();
+const router = useRouter()
 const editStore = useEditorStore();
-const route = useRoute();
-const queryId = ref(route.query.id);
-watch(
-  () => route.query,
-  (val) => {
-    if (val) queryId.value = val.id;
-  }
-);
 const data = ref(editStore.preview);
+const { isSupported, enter, exit, toggle } = useFullscreen()
 const init = () => {
-  if (!queryId.value) {
-    data.value = editStore.preview;
-  }
+  data.value = editStore.preview;
+  if(isSupported)enter()
 };
+onMounted(()=>{
+  init()
+})
+const handleBack = ()=>{
+  router.back()
+  exit()
+}
 </script>
 <template>
+<div class="w-full h-full flex items-center justify-center relative">
+  <div class="absolute top-10 right-10 z-999">
+    <p class="text-3xl text-gray-300">您正在处于预览模式，<span class=" font-bold cursor-pointer" @click="handleBack">点击此处返回！</span></p>
+  </div>
   <GridLayout
     :width="data.canvas.width"
     :height="data.canvas.height"
@@ -29,6 +32,7 @@ const init = () => {
   >
     <Widget
       v-for="(item, index) in data.widget"
+      preview
       :key="index"
       :w="item.w"
       :h="item.h"
@@ -39,5 +43,6 @@ const init = () => {
       :props="item.props"
     />
   </GridLayout>
+  </div>
 </template>
 <style scoped lang="less"></style>

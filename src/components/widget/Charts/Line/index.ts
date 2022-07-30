@@ -11,7 +11,7 @@ export type WidgetProps = {
     dark?:boolean
     theme:'default'|'primary'|'info'|'success'|'warning'|'error'
 }
-interface TextWidget extends Editor.Widget {
+interface Schema extends Editor.Widget {
     schema: {
         static:Widget.SchemaType
         staticData?:Widget.SchemaType
@@ -85,4 +85,4 @@ export default {
     y: 0,
     w: 6,
     h: 4,
-} as TextWidget 
+} as Schema 

@@ -1,11 +1,24 @@
 <script setup lang="ts" name="ToolBar">
 import { Logo } from "@/components";
-import { useAppStore } from "@/store";
+import { useAppStore,useEditorStore,useProjectStore } from "@/store";
 const appStore = useAppStore()
+const editStore = useEditorStore()
+const projectStore = useProjectStore()
 const router = useRouter();
-const handleToPreview = ()=>{
+const handlePreview = ()=>{
   appStore.editorKeepAlive = true
   router.push('/preview')
+}
+const handleSave = ()=>{
+  let data = {
+    id:editStore.id,
+    name:editStore.name,
+    author:editStore.author,
+    canvas:editStore.canvas,
+    canvasWidgetList:editStore.canvasWidgetList,
+    editWidgetId:editStore.editWidgetId
+  }
+  projectStore.set(data)
 }
 </script>
 <template>
@@ -23,7 +36,7 @@ const handleToPreview = ()=>{
     </div>
     <div class="h-60% w-1px bg-gray-300"></div>
     <div
-      class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
+      class="text-gray-300 flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
       hover="bg-black bg-opacity-10"
       active="bg-black bg-opacity-20"
     >
@@ -31,7 +44,7 @@ const handleToPreview = ()=>{
       <span>撤销</span>
     </div>
     <div
-      class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
+      class="text-gray-300 flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
       hover="bg-black bg-opacity-10"
       active="bg-black bg-opacity-20"
     >
@@ -39,7 +52,7 @@ const handleToPreview = ()=>{
       <span>恢复</span>
     </div>
     <div
-      class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
+      class="text-gray-300 flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
       hover="bg-black bg-opacity-10"
       active="bg-black bg-opacity-20"
     >
@@ -47,7 +60,7 @@ const handleToPreview = ()=>{
       <span>导入</span>
     </div>
     <div
-      class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
+      class="text-gray-300 flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
       hover="bg-black bg-opacity-10"
       active="bg-black bg-opacity-20"
     >
@@ -59,6 +72,7 @@ const handleToPreview = ()=>{
       class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
       hover="bg-black bg-opacity-10"
       active="bg-black bg-opacity-20"
+      @click="handleSave"
     >
       <i class="i-ri-save-fill"></i>
       <span>保存</span>
@@ -67,13 +81,13 @@ const handleToPreview = ()=>{
       class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
       hover="bg-black bg-opacity-10"
       active="bg-black bg-opacity-20"
-      @click="handleToPreview"
+      @click="handlePreview"
     >
       <i class="i-ri-apps-fill"></i>
       <span>预览</span>
     </div>
     <div
-      class="flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
+      class="text-gray-300 flex items-center justify-center gap-1 px-2 py-1 rounded-md cursor-pointer transition-colors"
       hover="bg-black bg-opacity-10"
       active="bg-black bg-opacity-20"
     >
