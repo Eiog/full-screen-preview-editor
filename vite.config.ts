@@ -14,11 +14,11 @@ export default defineConfig(({ command, mode }) => {
       cors: true, // 跨域设置允许
       strictPort: true, // 如果端口已占用直接退出
       proxy: {
-        '/api': {
-          target: 'https://mock.apifox.cn/m1/1336303-0-default/',
-          changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, '')
-        }
+        // '/api': {
+        //   target: 'https://mock.apifox.cn/m1/1336303-0-default/',
+        //   changeOrigin: true,
+        //   rewrite: path => path.replace(/^\/api/, '')
+        // }
       }
     },
     build: {
