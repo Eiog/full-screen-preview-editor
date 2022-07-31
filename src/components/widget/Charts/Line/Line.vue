@@ -40,7 +40,7 @@ const requestApi = (url: string, type = "get") => {
       });
   });
 };
-const intervalRef = ref<number>();
+const intervalRef = ref<any>();
 const initRequestApi = (url: string, type: string, interval = 500) => {
   intervalRef.value = setInterval(async () => {
     requestApi(url, type)

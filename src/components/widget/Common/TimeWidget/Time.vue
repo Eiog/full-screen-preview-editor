@@ -18,7 +18,7 @@ watch(
   { immediate: true, deep: true }
 );
 const time = ref<{ hour: string|number; min: string|number; second: string|number } | undefined>();
-const Interval = ref<number>();
+const Interval = ref<any>();
 const getTime = () => {
   return {
     hour: new Date().getHours()<10?'0'+new Date().getHours():new Date().getHours(),
