@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import Home from "@/views/home/home.vue";
+const Home = ()=>import('@/views/home/home.vue')
 const Routes: RouteRecordRaw = {
   path: "/Home",
   name: Home.name,

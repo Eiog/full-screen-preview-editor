@@ -8,6 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Audio: typeof import('./../components/widget/Media/AudioWidget/Audio.vue')['default']
+    GridLayout: typeof import('./../components/custom/GridLayout.vue')['default']
     Image: typeof import('./../components/widget/Media/ImageWidget/Image.vue')['default']
     Line: typeof import('./../components/widget/Charts/Line/Line.vue')['default']
     Logo: typeof import('./../components/common/Logo.vue')['default']
@@ -29,5 +30,6 @@ declare module '@vue/runtime-core' {
     Text: typeof import('./../components/widget/Common/TextWidget/Text.vue')['default']
     Time: typeof import('./../components/widget/Common/TimeWidget/Time.vue')['default']
     Video: typeof import('./../components/widget/Media/VideoWidget/Video.vue')['default']
+    Widget: typeof import('./../components/custom/Widget.vue')['default']
   }
 }

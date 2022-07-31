@@ -14,9 +14,27 @@ export const useProjectStore = defineStore({
     }),
     actions: {
         set(data: Editor.ProjectList) {
-            console.log(data);
-            
-            this.projectList?.push(data)
+            return new Promise((resolve, reject): void => {
+                const index = this.projectList?.findIndex(item=>item.id===data.id)
+                if(index!>-1){
+                    this.projectList![index!] = data
+                    return resolve('ok')
+                }
+                this.projectList?.push(data)
+                if (this.projectList?.some(item => item.id === data.id)) return resolve('ok')
+                return reject()
+            })
+
+        },
+        remove(id: string) {
+            return new Promise((resolve, reject): void => {
+                const index = this.projectList?.findIndex(item => item.id === id)
+                if (index! > -1) {
+                    this.projectList?.splice(index!, 1)
+                    return resolve('ok')
+                }
+                return reject()
+            })
         }
     },
     getters: {

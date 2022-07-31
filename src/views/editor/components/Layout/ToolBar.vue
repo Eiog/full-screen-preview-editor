@@ -18,7 +18,11 @@ const handleSave = ()=>{
     canvasWidgetList:editStore.canvasWidgetList,
     editWidgetId:editStore.editWidgetId
   }
-  projectStore.set(data)
+  projectStore.set(data).then(()=>{
+    window.$message.success('保存成功')
+  }).catch(()=>{
+    window.$message.error('保存失败')
+  })
 }
 </script>
 <template>

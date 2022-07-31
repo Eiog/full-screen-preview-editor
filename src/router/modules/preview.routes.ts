@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import Preview from "@/views/preview/preview.vue";
+const Preview = ()=>import ('@/views/preview/preview.vue')
 const Routes: RouteRecordRaw[] = [
   {
     path: "/preview/:id",

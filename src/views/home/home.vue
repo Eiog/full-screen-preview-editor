@@ -1,8 +1,10 @@
 <script setup lang="ts" name="Home">
-import { useAppStore,useEditorStore,useProjectStore } from "@/store";
+import { useAppStore, useEditorStore, useProjectStore } from "@/store";
+import ProjectCard from "./components/ProjectCard.vue";
+import autoAnimate from "@formkit/auto-animate"
 const appStore = useAppStore();
-const editStore = useEditorStore()
-const projectStore = useProjectStore()
+const editStore = useEditorStore();
+const projectStore = useProjectStore();
 const router = useRouter();
 const handleRouterToEditor = () => {
   router.push("/editor");
@@ -13,21 +15,26 @@ const options = [
     key: "logout",
   },
 ];
-const handleSelect = (key:any)=>{
-  if(key==='logout') {
-    window.$dialog.warning({title:'确认退出吗?',negativeText:'取消',positiveText:'确定',onPositiveClick:()=>{
-      handleLogout()
-    }})
+const handleSelect = (key: any) => {
+  if (key === "logout") {
+    window.$dialog.warning({
+      title: "确认退出吗?",
+      negativeText: "取消",
+      positiveText: "确定",
+      onPositiveClick: () => {
+        handleLogout();
+      },
+    });
   }
-}
-const handleLogout = ()=>{
-  appStore.logout()
-  router.push('/login')
-}
-const handleProjectItemClick = (id:string)=>{
-  console.log(id);
-  router.push(`/editor?id=${id}`)
-}
+};
+const handleLogout = () => {
+  appStore.logout();
+  router.push("/login");
+};
+const cardRef = ref()
+onMounted(()=>{
+  autoAnimate(cardRef.value)
+})
 </script>
 <template>
   <div
@@ -38,15 +45,15 @@ const handleProjectItemClick = (id:string)=>{
       <div class="flex items-center">
         <template v-if="appStore.isLogin">
           <n-dropdown trigger="hover" :options="options" @select="handleSelect">
-          <div class="flex items-center gap-3 cursor-pointer">
-            <div class="w-10 h-10 rounded-full overflow-hidden">
-              <img
-                class="w-full h-full object-cover"
-                :src="appStore.user?.avatar"
-                alt=""
-              />
-            </div>
-            <p class="text-xl text-gray-600">{{ appStore.user?.name }}</p>
+            <div class="flex items-center gap-3 cursor-pointer">
+              <div class="w-10 h-10 rounded-full overflow-hidden">
+                <img
+                  class="w-full h-full object-cover"
+                  :src="appStore.user?.avatar"
+                  alt=""
+                />
+              </div>
+              <p class="text-xl text-gray-600">{{ appStore.user?.name }}</p>
             </div>
           </n-dropdown>
         </template>
@@ -57,6 +64,7 @@ const handleProjectItemClick = (id:string)=>{
     </div>
     <div
       class="w-full h-full flex flex-wrap p-2 rounded-xl shadow-2xl shadow-gray-200 bg-white"
+      ref="cardRef"
     >
       <div class="w-1/3 h-50 p-2" lg="w-1/4" xl="w-1/6">
         <div
@@ -67,16 +75,18 @@ const handleProjectItemClick = (id:string)=>{
           <i class="i-ri-add-fill inline-block text-6xl text-gray-500"></i>
         </div>
       </div>
-      <div class="w-1/3 h-50 p-2" lg="w-1/4" xl="w-1/6" v-for="(item, index) in projectStore.projectList" :key="index">
-        <div
-          class="w-full h-full p-3 rounded-xl flex flex-col items-center justify-center cursor-pointer bg-gray-100 shadow-md shadow-transparent transition-shadow"
-          hover=" shadow-gray-200"
-          @click="handleProjectItemClick(item.id)"
-        >
-          <p class="self-start">ID:{{item.id}}</p>
-          <h1 class="flex-1 flex items-center justify-center">{{item.name}}</h1>
-          <p class="self-end">Author:{{item.author}}</p>
-        </div>
+      <div
+        class="w-1/3 h-50 p-2"
+        lg="w-1/4"
+        xl="w-1/6"
+        v-for="(item, index) in projectStore.projectList"
+        :key="index"
+      >
+        <project-card
+          :id="item.id"
+          :name="item.name"
+          :author="item.author"
+        ></project-card>
       </div>
     </div>
   </div>

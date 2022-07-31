@@ -1,7 +1,6 @@
 <script setup lang="ts" name="Preview">
 import { useAppStore, useEditorStore } from "@/store";
-import GridLayout from "./components/GridLayout.vue";
-import Widget from "./components/Widget.vue";
+import {GridLayout,Widget} from "@/components";
 const router = useRouter()
 const editStore = useEditorStore();
 const data = ref(editStore.preview);
